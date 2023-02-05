@@ -18,17 +18,17 @@ func GetBooks(db *gorm.DB) ([]models.Book, error) {
 	return books, nil
 }
 func GetBookByID(db *gorm.DB, id string) (models.Book, error) {
-	book := models.Book 
+	book := models.Book{}
 	err := db.Select("books.*").Group("books.id").Where("books.id= ?", id).First(&book).Error
- if err!=nil{
-	return err
+ if err !=nil{
+	return nil, err
 }
 	return &book, nil
 }
 func DeleteBookByID(db *gorm.DB, id string) error {
 	var book models.Book
 	err := db.Where("id=?",id).Delete(&book).Error
-	if err:=nil{
+	if err!=nil{
 		return nil
 	}
 	return nil

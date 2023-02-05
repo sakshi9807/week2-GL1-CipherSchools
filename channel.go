@@ -29,5 +29,6 @@ func main1() {
 	message := "Hello from MaAIN FUNCTION"
 	channel <- message
 	time.Sleep(time.Second * 5)
+	message = <-channel
 	fmt.Println("message")
 }
